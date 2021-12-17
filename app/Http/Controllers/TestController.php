@@ -20,9 +20,9 @@ class TestController extends Controller
         $profile_details = json_decode($res->getContent()); // convert to json object
         // return $profile_details;
         $token = $profile_details->access_token;
-        return $token;
+        // return $token;
 
-        $url_prog ='https://mgbackend.herokuapp.com/api/api/programs';
+        $url_prog ='https://mgbackend.herokuapp.com/api/programs';
         // $url_prog ='http://127.0.0.1:8000/api/programs';
         $request2 = Request::create($url_prog, 'GET');
         $request2->headers->set('Accept', 'application/json');
