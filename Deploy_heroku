@@ -14,4 +14,10 @@ https://devcenter.heroku.com/articles/getting-started-with-laravel
 menambahkan database 
 heroku addons:create heroku-postgresql:hobby-dev
 
+masuk ke heroku command
+heroku run bash
+
+php artisan migrate (create tabel)
+
+
 

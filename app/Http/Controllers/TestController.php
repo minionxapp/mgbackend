@@ -16,6 +16,7 @@ class TestController extends Controller
         $res = app()->handle($request);
         $profile_details = json_decode($res->getContent()); // convert to json object
         // return $profile_details;
+        dd($res);
         $token = $profile_details->access_token;
 
 
