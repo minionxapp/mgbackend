@@ -1,0 +1,17 @@
+buat file Procfile pada root folder
+isi file :::  web: vendor/bin/heroku-php-apache2 public/
+
+setting parameter
+lihat dan copas key:::
+php artisan key:generate --show
+
+set key :::
+heroku config:set APP_KEY=… (hasil dari php artisan key:generate --show)
+
+tutorial all nya ::::
+https://devcenter.heroku.com/articles/getting-started-with-laravel
+
+menambahkan database 
+heroku addons:create heroku-postgresql:hobby-dev
+
+

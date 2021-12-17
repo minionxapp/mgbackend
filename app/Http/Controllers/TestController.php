@@ -9,7 +9,7 @@ class TestController extends Controller
     public function index()
     {
         //Login
-        $request = Request::create('http://127.0.0.1:8000/api/login', 'POST');
+        $request = Request::create('https://mgbackend.herokuapp.com/api/login', 'POST');
         $request->headers->set('Accept', 'application/json');
         // $request->headers->set('Authorization', 'Bearer '.$token);
         $request->merge(['email' => 'mugi@gmail.com', 'password' => '1234qwerty']);
@@ -19,7 +19,7 @@ class TestController extends Controller
         $token = $profile_details->access_token;
 
 
-        $request2 = Request::create('http://127.0.0.1:8000/api/programs', 'GET');
+        $request2 = Request::create('https://mgbackend.herokuapp.com/api/programs', 'GET');
         $request2->headers->set('Accept', 'application/json');
         $request2->headers->set('Authorization', 'Bearer '.$token);
         $res2 = app()->handle($request2);
