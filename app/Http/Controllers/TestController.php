@@ -3,33 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class TestController extends Controller
 {
     public function index()
     {
-        //Login
+        // //Login
         $url_login ='https://mgbackend.herokuapp.com/api/login';
-        // $url_login ='http://127.0.0.1:8000/api/login';
+        $url_prog  ='https://mgbackend.herokuapp.com/api/programs';
+ 
+//get key (login)
+$response = Http::withHeaders([
+    // 'Authorization' => 'token' 
+    'Accept'=> 'application/json'
+])->post($url_login, [
+    'email' => 'mugi@gmail.com',
+    'password' => '1234qwerty'
+]);
 
-        $request = Request::create($url_login, 'POST');
-        $request->headers->set('Accept', 'application/json');
-        // $request->headers->set('Authorization', 'Bearer '.$token);
-        $request->merge(['email' => 'mugi@gmail.com', 'password' => '1234qwerty']);
-        $res = app()->handle($request);
-        $profile_details = json_decode($res->getContent()); // convert to json object
-        // return $profile_details;
-        $token = $profile_details->access_token;
-        // return $token;
+$rest = $response->body();
+$xj = json_decode($rest);// decode($rest->getContent());
+$token= $xj->access_token;
 
-        $url_prog ='https://mgbackend.herokuapp.com/api/programs';
-        // $url_prog ='http://127.0.0.1:8000/api/programs';
-        $request2 = Request::create($url_prog, 'GET');
-        $request2->headers->set('Accept', 'application/json');
-        $request2->headers->set('Authorization', 'Bearer '.$token);
-        $res2 = app()->handle($request2);
-        $programs = json_decode($res2->getContent()); // convert to json object
-        // dd($res2);
-        return $programs;
+//get data (get)
+$response2 = Http::withHeaders([
+    'Authorization' => 'Bearer '.$token,
+    'Accept'=> 'application/json'
+])->get($url_prog);
+
+
+return $token ." ***** ". $response2->body();
+
+
     }
 }

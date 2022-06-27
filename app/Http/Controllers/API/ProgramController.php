@@ -4,9 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Program;
 use App\Http\Resources\ProgramResource;
+// use Dotenv\Validator;
 
 class ProgramController extends Controller
 {

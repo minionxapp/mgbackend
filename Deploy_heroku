@@ -1,3 +1,10 @@
+https://codelapan.com/post/laravel-8-rest-api-authentication-dengan-sanctum
+
+clone :: git clone https://......
+composer install
+bila admin lte error jalankan
+php artisan adminlte:install --only=main_views
+
 buat file Procfile pada root folder
 isi file :::  web: vendor/bin/heroku-php-apache2 public/
 
