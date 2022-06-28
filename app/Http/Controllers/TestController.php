@@ -16,7 +16,12 @@ class TestController extends Controller
 //get key (login)
 $response = Http::withHeaders([
     // 'Authorization' => 'token' 
-    'Accept'=> 'application/json'
+    // header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Headers: X-Requested-With');
+    'Accept'=> 'application/json',
+    'Access-Control-Allow-Origin'=>'*',
+    'Access-Control-Allow-Headers'=>'X-Requested-With'
+
 ])->post($url_login, [
     'email' => 'mugi@gmail.com',
     'password' => '1234qwerty'
